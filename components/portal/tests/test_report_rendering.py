@@ -55,7 +55,7 @@ class ReportRenderingTests(unittest.TestCase):
         subprocess.run(["git", "init", "--bare", str(self.archive_remote)], check=True, capture_output=True, text=True)
         subprocess.run(["git", "clone", str(self.archive_remote), str(self.archive_repo)], check=True, capture_output=True, text=True)
         subprocess.run(["git", "-C", str(self.archive_repo), "config", "user.name", "Portal Test"], check=True, capture_output=True, text=True)
-        subprocess.run(["git", "-C", str(self.archive_repo), "config", "user.email", "portal-test@example.com"], check=True, capture_output=True, text=True)
+        subprocess.run(["git", "-C", str(self.archive_repo), "config", "user.email", "portal-test.invalid"], check=True, capture_output=True, text=True)
         subprocess.run(["git", "-C", str(self.archive_repo), "switch", "-c", "main"], check=True, capture_output=True, text=True)
         (self.archive_repo / "README.md").write_text("# Test archive repo\n", encoding="utf-8")
         subprocess.run(["git", "-C", str(self.archive_repo), "add", "README.md"], check=True, capture_output=True, text=True)

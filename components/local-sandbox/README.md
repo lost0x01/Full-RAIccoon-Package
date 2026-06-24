@@ -33,7 +33,7 @@ Recommended defaults:
 - Host bridge IP (host-only adapter): `192.168.56.254`
 - REMnux analysis gateway / Windows default gateway + DNS: `192.168.56.1`
 - Guest IP: `192.168.56.20`
-- Sample archive password: `infected`
+- Sample archive credential: document out-of-band; do not commit it.
 
 ## Quick Start
 

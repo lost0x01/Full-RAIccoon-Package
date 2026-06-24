@@ -9,7 +9,7 @@ WorkingDirectory=/opt/raiccoon/internal-secops-portal
 Environment=SECOPS_PORTAL_HOST=0.0.0.0
 Environment=SECOPS_PORTAL_PORT=8008
 Environment=SECOPS_ALLOWED_CIDRS=127.0.0.1/32,10.0.0.0/24
-Environment=PORTAL_SECRET_KEY=replace-with-long-random-secret
+Environment=PORTAL_SECRET_KEY=CHANGE_ME_LONG_RANDOM_SECRET
 Environment=RAICCOON_ADMIN_USERNAME=admin
 Environment=RAICCOON_ADMIN_PASSWORD=change-me-now
 Environment=HERMES_CLI=/opt/raiccoon/.local/bin/hermes

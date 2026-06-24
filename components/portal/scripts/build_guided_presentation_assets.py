@@ -185,7 +185,7 @@ def make_frame(segment: Segment, index: int, duration: float) -> Path:
         draw.line((i, 0, i - 240, H), fill=color, width=2)
     draw.rectangle((0, 0, W, 80), fill="#0b1628")
     draw.rectangle((0, 675, W, H), fill="#08111f")
-    draw.text((42, 24), "LOST BOYS CYBER", font=load_font(22, True), fill=WHITE)
+    draw.text((42, 24), "YOUR ORGANIZATION", font=load_font(22, True), fill=WHITE)
     draw.text((1080, 27), f"{index:02d}/{len(SEGMENTS):02d}", font=load_font(20, True), fill=segment.accent)
 
     screenshot_path = ARTIFACTS / segment.screenshot
@@ -333,7 +333,7 @@ def build_pptx():
         header = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(13.333), Inches(0.68))
         header.fill.solid()
         header.fill.fore_color.rgb = RGBColor(11, 22, 40)
-        add_textbox(slide, 0.45, 0.18, 3.5, 0.35, "LOST BOYS CYBER", 14, True, WHITE)
+        add_textbox(slide, 0.45, 0.18, 3.5, 0.35, "YOUR ORGANIZATION", 14, True, WHITE)
         add_textbox(slide, 11.5, 0.18, 1.2, 0.35, f"{idx:02d}/{len(SEGMENTS):02d}", 13, True, seg.accent, PP_ALIGN.RIGHT)
         slide.shapes.add_picture(str(ARTIFACTS / seg.screenshot), Inches(0.55), Inches(1.08), width=Inches(7.55), height=Inches(4.98))
         # right panel

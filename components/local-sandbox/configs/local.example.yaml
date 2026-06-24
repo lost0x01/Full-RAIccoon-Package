@@ -11,7 +11,7 @@ network:
 
 run:
   duration: 180
-  password: infected
+  password: CHANGE_ME_SAMPLE_ARCHIVE_PASSWORD
   stop_apache: true
   suricata: true
   memory_dump: false

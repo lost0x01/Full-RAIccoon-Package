@@ -1715,7 +1715,7 @@ tbody tr:hover { background: rgba(111, 164, 222, 0.12); }
   .chat-shell, .login-shell { grid-template-columns: 1fr; }
 }
 
-/* Stronger XFCE desktop pass: obvious lightweight Linux desktop chrome. */
+/* Stronger XFCE desktop treatment: obvious lightweight Linux desktop chrome. */
 body {
   background:
     radial-gradient(circle at 20% 16%, rgba(89, 135, 185, 0.20), transparent 28%),

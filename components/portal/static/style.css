@@ -1730,7 +1730,7 @@ body::before {
   background: linear-gradient(180deg, #43576d 0%, #2c3c4c 45%, #1f2b37 100%);
 }
 body::after {
-  content: "Workspace 1   ◼   CPU: ready   ◼   VPN: Tailscale   ◼   niman.tail097dd4.ts.net";
+  content: "Workspace 1   ◼   CPU: ready   ◼   VPN: private relay   ◼   your-portal.example.ts.net";
   background: linear-gradient(180deg, #303f50 0%, #202c39 100%);
 }
 .layout::before {
@@ -2328,8 +2328,7 @@ body.portal-quiet {
   border-radius: 10px;
   background: rgba(12, 18, 25, 0.84);
 }
-.portal-quiet .simple-nav a,
-.portal-quiet .more-nav > summary {
+.portal-quiet .simple-nav a {
   display: inline-flex;
   align-items: center;
   min-height: 34px;
@@ -2341,25 +2340,35 @@ body.portal-quiet {
   cursor: pointer;
   white-space: nowrap;
 }
-.portal-quiet .simple-nav a.active,
-.portal-quiet .more-nav:has(a.active) > summary {
+.portal-quiet .simple-nav a.active {
   border-color: rgba(0, 255, 140, 0.38);
   background: rgba(0, 255, 140, 0.13);
 }
-.portal-quiet .more-nav { position: relative; margin-left: auto; }
-.portal-quiet .more-nav-menu {
-  position: absolute;
-  z-index: 20;
-  right: 0;
-  top: calc(100% + 8px);
+.portal-quiet .grouped-nav {
+  align-items: stretch;
+}
+.portal-quiet .nav-group {
+  flex: 1 1 260px;
   min-width: 220px;
-  padding: 8px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 6px;
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  padding: 8px;
+  border: 1px solid rgba(34, 197, 94, 0.16);
   border-radius: 10px;
-  background: #111923;
-  box-shadow: 0 18px 42px rgba(0,0,0,0.38);
+  background: rgba(8, 13, 18, 0.42);
+}
+.portal-quiet .nav-group-label {
+  color: var(--accent-2);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.portal-quiet .nav-group-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .portal-quiet .workflow-command-center {
   margin-top: 12px;
@@ -2400,8 +2409,9 @@ body.portal-quiet {
     align-items: stretch;
     flex-direction: column;
   }
-  .portal-quiet .more-nav { margin-left: 0; }
-  .portal-quiet .more-nav-menu { position: static; margin-top: 8px; }
+  .portal-quiet .nav-group {
+    min-width: 100%;
+  }
 }
 
 

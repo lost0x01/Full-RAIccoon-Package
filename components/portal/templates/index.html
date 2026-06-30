@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="/static/branding/favicon.ico?v=branding-20260617-1">
   <link rel="apple-touch-icon" href="/static/branding/apple-touch-icon.png?v=branding-20260617-1">
   <link rel="manifest" href="/static/branding/site.webmanifest?v=branding-20260618-1">
-  <link rel="stylesheet" href="/static/style.css?v=branding-20260623-table-heads-1">
+  <link rel="stylesheet" href="/static/style.css?v=branding-20260630-nav-groups-1">
 </head>
 <body class="portal-quiet">
   <header class="topbar compact-topbar">
@@ -39,19 +39,17 @@
     </div>
   </header>
 
-  <nav class="tabs simple-nav" aria-label="Primary portal navigation">
-    {% set primary_nav = ['dashboard', 'tasks', 'research', 'chat', 'documents'] %}
-    {% for item in nav_items if item.key in primary_nav %}
-    <a href="{{ item.path }}" class="{% if item.key == active_page %}active{% endif %}">{{ item.label }}</a>
-    {% endfor %}
-    <details class="more-nav">
-      <summary>More</summary>
-      <div class="more-nav-menu">
-        {% for item in nav_items if item.key not in primary_nav %}
+  <nav class="tabs simple-nav grouped-nav" aria-label="Primary portal navigation">
+    {% for group in nav_groups %}
+    <section class="nav-group" aria-label="{{ group['label'] }} navigation group">
+      <div class="nav-group-label">{{ group['label'] }}</div>
+      <div class="nav-group-items">
+        {% for item in nav_items if item.key in group['items'] %}
         <a href="{{ item.path }}" class="{% if item.key == active_page %}active{% endif %}">{{ item.label }}</a>
         {% endfor %}
       </div>
-    </details>
+    </section>
+    {% endfor %}
   </nav>
 
   {% if message %}<div class="banner success">{{ message }}</div>{% endif %}

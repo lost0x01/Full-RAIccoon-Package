@@ -400,6 +400,21 @@ class TaskRouteTests(unittest.TestCase):
         self.assertEqual([card["label"] for card in context["action_cards"]], ["Unblock work", "Review queue", "SLA risk", "Quality gates"])
         self.assertIn("blocked", context["status_line"])
 
+    def test_dashboard_nav_renders_grouped_sections(self):
+        response = portal_app.dashboard_page(DummyRequest())
+        html = response.body.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('class="tabs simple-nav grouped-nav"', html)
+        self.assertIn(">Command<", html)
+        self.assertIn(">Delivery<", html)
+        self.assertIn(">Admin<", html)
+        self.assertIn('href="/research"', html)
+        self.assertIn('href="/works"', html)
+        self.assertIn('href="/security"', html)
+        self.assertLess(html.index(">Command<"), html.index(">Delivery<"))
+        self.assertLess(html.index(">Delivery<"), html.index(">Admin<"))
+
     def test_workflow_data_route_requires_auth_and_returns_workflow_payload(self):
         self.create_task(title="Needs operator", status="blocked", task_type="research")
 

@@ -208,6 +208,20 @@ NAV_ITEMS = [
     {"key": "tasks", "label": "Tasks", "path": "/tasks"},
     {"key": "deploy", "label": "Deployment", "path": "/deploy"},
 ]
+NAV_GROUPS = [
+    {
+        "label": "Command",
+        "items": ["dashboard", "tasks", "research", "chat"],
+    },
+    {
+        "label": "Delivery",
+        "items": ["documents", "works", "costs", "clients"],
+    },
+    {
+        "label": "Admin",
+        "items": ["security", "deploy"],
+    },
+]
 RESEARCH_WORKFLOWS = {
     "general": {
         "label": "General research",
@@ -5235,6 +5249,7 @@ def render(
         "active_page": active_page,
         "page_title": PAGE_TITLES.get(active_page, APP_TITLE),
         "nav_items": NAV_ITEMS,
+        "nav_groups": NAV_GROUPS,
         "summary": dashboard_summary(),
         "searches": searches,
         "research_tasks": research_tasks,

@@ -129,6 +129,7 @@ Add your organization-specific material in these places:
 - `components/portal/templates/` for navigation labels and page copy
 - `.env` for portal title/admin/runtime settings
 - `skills/` for internal analyst playbooks
+- `skills/hermes-opencti-redteam-skill-setup/` for installing the community `redteam-threat-exploits` Hermes skill and wiring it to local OpenCTI
 - `components/local-sandbox/configs/local.example.yaml` for VM names, snapshots, and network values
 
 Avoid committing:

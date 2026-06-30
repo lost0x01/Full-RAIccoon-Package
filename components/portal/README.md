@@ -1,6 +1,6 @@
 # RAIccoon Operations Portal
 
-A brand-neutral FastAPI/SQLite portal for internal analyst operations. It includes request intake, task tracking, document/report handling, optional Hermes CLI dispatch, and deployment examples.
+A brand-neutral FastAPI/SQLite portal for internal analyst operations. It includes request intake, task tracking, document/report handling, optional Hermes CLI dispatch, a SOAR command center, cases, playbooks, approvals, workflow runs, and deployment examples.
 
 ## Run
 

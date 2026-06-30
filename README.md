@@ -7,6 +7,7 @@ A brand-neutral, local-first deployment skeleton for analyst teams that want a w
 - a local VirtualBox malware-analysis sandbox
 - optional OpenCTI report ingestion scaffolding
 - deployment scripts that are easy to customize for each organization
+- a SOAR-capable portal shell with cases, playbooks, approvals, workflow runs, and grouped operator navigation
 
 This repository intentionally ships without organization branding, private data, report artifacts, credentials, or live environment state. Treat it as a skeleton: clone it, add your own branding, tune workflows, and wire it into your own infrastructure.
 
@@ -23,6 +24,18 @@ deploy/
 scripts/                  Bootstrap, smoke-test, and sanitization helpers
 docs/                     Architecture and rollout notes
 ```
+
+## Portal feature highlights
+
+The packaged portal now includes more than basic intake and tracking. The current shell covers:
+
+- grouped navigation for `Command`, `Investigations`, `Client Delivery`, and `Admin`
+- `/soar` command center for open cases, pending approvals, active workflow runs, and playbook inventory
+- `/cases` and `/cases/{case_id}` for case summaries, timelines, artifacts, linked tasks, and related playbooks
+- `/playbooks` for catalog browsing, launch actions, and recent workflow-run visibility
+- `/approvals` for approval queue review and higher-risk operator holds
+- authenticated JSON endpoints for case list/detail/create, playbook launch, and workflow-run status changes
+- extracted workflow service modules under `components/portal/portal/services/` for registry and workflow engine logic
 
 ## Quick start: local portal
 
@@ -153,6 +166,15 @@ scripts/smoke-test.sh
 
 # scan for common private branding/secrets before publishing
 scripts/sanitize-check.sh
+```
+
+Focused portal verification after the SOAR/navigation tranche:
+
+```bash
+cd components/portal
+python3 -m py_compile app.py
+PYTHONPATH=$PWD uv run --with-requirements requirements.txt --with pytest --with httpx pytest tests/test_task_routes.py -q
+PYTHONPATH=$PWD uv run --with-requirements requirements.txt --with pytest --with httpx pytest tests/test_soar_porting.py -q
 ```
 
 ## Security notes
